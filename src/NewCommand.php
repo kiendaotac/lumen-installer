@@ -144,7 +144,7 @@ class NewCommand extends Command
 
 
     /**
-     * Create a Git repository and commit the base Laravel skeleton.
+     * Create a Git repository and commit the base Lumen skeleton.
      *
      * @param  string  $directory
      * @param  \Symfony\Component\Console\Input\InputInterface  $input
