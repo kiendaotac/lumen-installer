@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\Installer\Console\Tests;
+namespace Kiendaotac\Lumen\Installer\Console\Tests;
 
-use Laravel\Installer\Console\NewCommand;
+use Kiendaotac\Lumen\Installer\Console\NewCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -22,7 +22,7 @@ class NewCommandTest extends TestCase
             }
         }
 
-        $app = new Application('Laravel Installer');
+        $app = new Application('Lumen Installer');
         $app->add(new NewCommand);
 
         $tester = new CommandTester($app->find('new'));
