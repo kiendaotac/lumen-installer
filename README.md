@@ -1,26 +1,49 @@
-# Laravel Installer
 
-<a href="https://github.com/laravel/installer/actions"><img src="https://github.com/laravel/installer/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/installer"><img src="https://img.shields.io/packagist/dt/laravel/installer" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/installer"><img src="https://img.shields.io/packagist/v/laravel/installer" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/installer"><img src="https://img.shields.io/packagist/l/laravel/installer" alt="License"></a>
+# Lumen installer
 
-## Official Documentation
+[![Build Status](https://travis-ci.org/kiendaotac/lumen-installer.svg)](https://travis-ci.org/kiendaotac/lumen-installer)
+[![Total Downloads](https://img.shields.io/packagist/dt/kiendaotac/lumen-installer)](https://packagist.org/packages/kiendaotac/lumen-installer)
+[![Latest Stable Version](https://img.shields.io/packagist/v/kiendaotac/lumen-installer)](https://packagist.org/packages/kiendaotac/lumen-installer)
+[![License](https://img.shields.io/packagist/l/kiendaotac/lumen-installer)](https://packagist.org/packages/kiendaotac/lumen-installer)
+![Github](https://github.com/kiendaotac/lumen-installer/actions/workflows/tests.yml/badge.svg)
 
-Documentation for installing Laravel can be found on the [Laravel website](https://laravel.com/docs#installing-laravel).
+
+Lumen Installer is a package I create from Laravel Installer for scaffolding new Lumen application
+## Installation
+
+Install Lumen installer with composer
+
+```bash
+  composer global require kiendaotac/lumen-installer
+```
+
+Export your path on macOS if necessary
+
+```bash
+  export PATH="$HOME/.composer/vendor/bin:$PATH"
+```
+
+Use
+
+```bash
+  lumen new your-project-name
+```
+
+## Documentation
+
+[Documentation](https://lumen.laravel.com/docs/8.x)
+
 
 ## Contributing
 
-Thank you for considering contributing to the Installer! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are always welcome!
 
-## Code of Conduct
+See `contributing.md` for ways to get started.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Please adhere to this project's `code of conduct`.
 
-## Security Vulnerabilities
 
-Please review [our security policy](https://github.com/laravel/installer/security/policy) on how to report security vulnerabilities.
+## Authors
 
-## License
+- [@kiendaotac](https://www.github.com/kiendaotac)
 
-Laravel Installer is open-sourced software licensed under the [MIT license](LICENSE.md).

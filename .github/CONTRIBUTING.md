@@ -1,3 +1,3 @@
 # Contribution Guide
 
-The Laravel contributing guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The Lumen contributing guide can be found in the [Lumen documentation](https://lumen.laravel.com/docs/).
