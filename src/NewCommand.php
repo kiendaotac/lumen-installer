@@ -1,7 +1,8 @@
 <?php
 
-namespace Laravel\Installer\Console;
+namespace Kiendaotac\Lumen\Installer\Console;
 
+use Exception;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -36,11 +37,12 @@ class NewCommand extends Command
     /**
      * Execute the command.
      *
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @return int
+     * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
             $output->write(PHP_EOL.'<fg=green>      ___       ___           ___           ___           ___     
@@ -99,6 +101,12 @@ class NewCommand extends Command
                 );
 
                 $this->replaceInFile(
+                    'APP_KEY=',
+                    'APP_KEY=' . 'base64:'. base64_encode(random_bytes(32)),
+                    $directory.'/.env'
+                );
+
+                $this->replaceInFile(
                     'DB_DATABASE=lumen',
                     'DB_DATABASE='.str_replace('-', '_', strtolower($name)),
                     $directory.'/.env'
@@ -131,7 +139,7 @@ class NewCommand extends Command
      *
      * @return string
      */
-    protected function defaultBranch()
+    protected function defaultBranch(): string
     {
         $process = new Process(['git', 'config', '--global', 'init.defaultBranch']);
 
@@ -147,8 +155,8 @@ class NewCommand extends Command
      * Create a Git repository and commit the base Lumen skeleton.
      *
      * @param  string  $directory
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @return void
      */
     protected function createRepository(string $directory, InputInterface $input, OutputInterface $output)
@@ -172,8 +180,8 @@ class NewCommand extends Command
      *
      * @param  string  $message
      * @param  string  $directory
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @return void
      */
     protected function commitChanges(string $message, string $directory, InputInterface $input, OutputInterface $output)
@@ -197,8 +205,8 @@ class NewCommand extends Command
      *
      * @param  string  $name
      * @param  string  $directory
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @return void
      */
     protected function pushToGitHub(string $name, string $directory, InputInterface $input, OutputInterface $output)
@@ -229,10 +237,10 @@ class NewCommand extends Command
     /**
      * Verify that the application does not already exist.
      *
-     * @param  string  $directory
+     * @param string $directory
      * @return void
      */
-    protected function verifyApplicationDoesntExist($directory)
+    protected function verifyApplicationDoesntExist(string $directory)
     {
         if ((is_dir($directory) || is_file($directory)) && $directory != getcwd()) {
             throw new RuntimeException('Application already exists!');
@@ -242,10 +250,10 @@ class NewCommand extends Command
     /**
      * Get the version that should be downloaded.
      *
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     * @param InputInterface $input
      * @return string
      */
-    protected function getVersion(InputInterface $input)
+    protected function getVersion(InputInterface $input): string
     {
         if ($input->getOption('dev')) {
             return 'dev-master';
@@ -259,7 +267,7 @@ class NewCommand extends Command
      *
      * @return string
      */
-    protected function findComposer()
+    protected function findComposer(): string
     {
         $composerPath = getcwd().'/composer.phar';
 
@@ -273,13 +281,13 @@ class NewCommand extends Command
     /**
      * Run the given commands.
      *
-     * @param  array  $commands
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @param array $commands
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @param  array  $env
-     * @return \Symfony\Component\Process\Process
+     * @return Process
      */
-    protected function runCommands($commands, InputInterface $input, OutputInterface $output, array $env = [])
+    protected function runCommands(array $commands, InputInterface $input, OutputInterface $output, array $env = []): Process
     {
         if (! $output->isDecorated()) {
             $commands = array_map(function ($value) {

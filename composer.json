@@ -22,12 +22,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Laravel\\Installer\\Console\\": "src/"
+            "Kiendaotac\\Lumen\\Installer\\Console\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Laravel\\Installer\\Console\\Tests\\": "tests/"
+            "Kiendaotac\\Lumen\\Installer\\Console\\Tests\\": "tests/"
         }
     },
     "extra": {
